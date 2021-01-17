@@ -2,3 +2,65 @@ body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+#map {
+    height: 100vh;
+}
+
+.title {
+    font-size: 88px;
+    position: absolute;
+    z-index: 10;
+    top: 100px;
+    left: 100px;
+    color: #333;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.search-container {
+    width: 400px;
+    height: 60px;
+    background-color: #454E53;
+    position: absolute;
+    z-index: 10;
+    left: 100px;
+    top: 230px;
+    border-radius: 30px;
+    display: flex;
+    /*  justify-content: center;
+    align-items: center;*/
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#zip-code {
+    flex-grow: 1;
+    font-size: 25px;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    outline: none;
+}
+
+.search .fa-search {
+    color: #fff;
+    font-size: 25px;
+}
+
+.stores-list-container {
+    width: 400px;
+    border-radius: 30px;
+    background-color: #fff;
+    top: 320px;
+    position: absolute;
+    z-index: 10;
+}
