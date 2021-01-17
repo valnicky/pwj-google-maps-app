@@ -20,27 +20,14 @@
             <input id="zip-code" type="text" placeholder="Enter zip" class="focus-visible" data-focus-visible-added>
             <i class="fas fa-search"></i>
         </div>
-        <div class="stores-list-container"></div>
-
     </div>
+    <div class="stores-list-container"></div>
     <div id="map"></div>
-    <script>
-        let map;
 
-        function initMap() {
-            let losAngeles = {
-                lat: 34.063380,
-                lng: -118.358080
-            };
-            map = new google.maps.Map(document.getElementById("map"), {
-                center: losAngeles,
-                zoom: 8,
-            });
-        }
-    </script>
     <script src="js/index.js" async defer></script>
     <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzBxakJgyoP72UvsoJ6F-lpWCSGKl20IQ&callback=initMap">
     </script>
+
 </body>
 
 </html>
