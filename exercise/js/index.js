@@ -1,8 +1,7 @@
  let map;
  let infoWindow;
+ let markers = [];
  /*pass:  Database7*/
- *
- /
 
  function initMap() {
      let losAngeles = {
@@ -14,7 +13,7 @@
          zoom: 8
      });
      infoWindow = new google.maps.InfoWindow();
-     getStores();
+ 
 
  }
 
@@ -28,8 +27,45 @@
          }
      }).then((data) => {
          searchLocationsNear(data);
+         setStoresList(data);
+         setOnClickListener();
      });
  }
+
+
+ const setOnClickListener = () => {
+     let storeElements = document.querySelectorAll('.store-container');
+     storeElements.forEach((elem, index) => {
+         elem.addEventListener('click', () => {
+             google.maps.event.trigger(markers[index], 'click');
+         })
+
+     });
+ }
+
+ const setStoresList = (stores) => {
+     let storesHtml = '';
+     stores.forEach((store, index) => {
+         storeHtml += ` 
+           <div class="store-container">
+                <div class="store-container-background">
+                    <div class="store-info-container">
+                        <div class="store-address">
+                            <span>${store.addressLines[0]}</span>
+                            <span>${store.addressLine[1]}</span>
+                        </div>
+                        <div class="store-phone-number">${store.phoneNumber}</div>
+                    </div>
+                </div>
+                <div class="store-number-container">
+                    <div class="store-number">${index+1}</div>
+                </div>
+            </div>
+         `
+     });
+     document.querySelector('.stores-list').innerHtml = storesHtml;;
+ }
+
 
  const searchLocationsNear = (stores) => {
      stores.forEach((store, index) => {
@@ -73,5 +109,6 @@
      google.maps.event.addEventListener(marker, 'click', function() {
          infoWindow.setContent(html);
          infoWindow.open(map, marker);
-     })
+     });
+     markers.push(marker);
  }

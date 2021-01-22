@@ -17,8 +17,8 @@
     </div>
     <div class="search-container">
         <div class="search">
-            <input id="zip-code" type="text" placeholder="Enter zip" class="focus-visible" data-focus-visible-added>
-            <i class="fas fa-search"></i>
+            <input id="zip-code" type="text" onkeyup="onEnter(event)" placeholder="Enter zip" class="focus-visible" data-focus-visible-added>
+            <i class="fas fa-search" onclick="getStores()"></i>
         </div>
     </div>
     <div class="stores-list-container">
