@@ -13,25 +13,44 @@
          zoom: 8
      });
      infoWindow = new google.maps.InfoWindow();
- 
+ }
 
+ const onEnter = (e) => {
+     if (e.key == 'Enter') {
+         getScores();
+     }
  }
 
  const getStores = () => {
+     const zipCode = document.getElementById('zip-code').value;
+
+     if (!zipCode) {
+         return;
+     };
      const API_URL = `http://localhost:3000/api/stores`;
-     fetch(API_URL).then((response) => {
+     const fullUrl = `${API_URL}?zip_code=${zipCode}`;
+
+     fetch(fullUrl).then((response) => {
          if (response.status == 200) {
              return response.json();
          } else {
              throw new Error(response.status);
          }
      }).then((data) => {
+         clearLocations();
          searchLocationsNear(data);
          setStoresList(data);
          setOnClickListener();
      });
  }
 
+ const clearLocations = () => {
+     infoWindow.close();
+     for (let i = 0; i < markers.length; i++) {
+         markers[i].setMap(null);
+     }
+     markers.length = 0;
+ }
 
  const setOnClickListener = () => {
      let storeElements = document.querySelectorAll('.store-container');
