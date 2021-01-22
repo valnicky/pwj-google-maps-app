@@ -10,7 +10,7 @@
      };
      map = new google.maps.Map(document.getElementById("map"), {
          center: losAngeles,
-         zoom: 8
+         zoom: 11
      });
      infoWindow = new google.maps.InfoWindow();
  }
@@ -37,10 +37,16 @@
              throw new Error(response.status);
          }
      }).then((data) => {
-         clearLocations();
-         searchLocationsNear(data);
-         setStoresList(data);
-         setOnClickListener();
+         if (data.length > 0) {
+             clearLocations();
+             searchLocationsNear(data);
+             setStoresList(data);
+             setOnClickListener();
+         } else {
+             clearLocations();
+             noStoresFound();
+         }
+
      });
  }
 
@@ -50,6 +56,13 @@
          markers[i].setMap(null);
      }
      markers.length = 0;
+ }
+
+ const noStoresFound = () => {
+     const html = `
+     <div class="no-stores-found">No Stores Found</div>
+     `
+     document.querySelector('.stores-list').innerHTML = html;
  }
 
  const setOnClickListener = () => {

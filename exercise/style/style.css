@@ -179,3 +179,30 @@ body {
 .store-container-background:hover {
     background-color: #cccccc87;
 }
+
+.intro {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.enter-zip {
+    color: #514C4C;
+    font-size: 22px;
+}
+
+.find-stores {
+    color: #1985A1;
+    font-size: 20px;
+}
+
+.no-stores-found {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #514C4C;
+    font-size: 20px;
+}
